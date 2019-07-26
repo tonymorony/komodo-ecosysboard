@@ -2,6 +2,7 @@
   "http_port": 8080,
   "git_bot_client_id": "yourOauthClientId",
   "git_bot_secret_id": "yourOauthSecretId",
+  "front_end_gui_path": "path_to_gui_here",
   "coins": [
     {
       "coin": "kmd",

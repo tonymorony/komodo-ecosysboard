@@ -16,7 +16,11 @@ See deployment for notes on how to deploy the project on a live system.
 To build the project please follow the instructions below:
 
 ```bash
-go build -o komodo-ecosysboard ecosysboard/ecosysboard.go
+go build -o komodo-ecosysboard ecosysboard/ecosysboard
+
+#Or if you clone the repository in GOPATH:
+
+GO111MODULE=on go build -o komodo-ecosysboard ecosysboard/ecosysboard.
 ```
 
 ## Installing
@@ -29,6 +33,10 @@ To run the tests type the following instructions below:
 
 ```
 go test ./...
+
+Or if you clone the repository in GOPATH:
+
+GO111MODULE=on go test ./...
 ```
 
 ### Coverage
