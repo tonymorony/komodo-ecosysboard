@@ -271,6 +271,55 @@
       "git": [
         "KomodoPlatform"
       ]
+    },
+    {
+      "coin": "kmdice",
+      "coin_paprika_id": "kmdice",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "dion",
+      "coin_paprika_id": "dion",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "ksb",
+      "coin_paprika_id": "ksb",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "our",
+      "coin_paprika_id": "our",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "iln",
+      "coin_paprika_id": "iln",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "koin",
+      "coin_paprika_id": "koin-koinon",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "zexo",
+      "coin_paprika_id": "zex-zaddex",
+      "git": [
+        "KomodoPlatform"
+      ]
     }
   ],
   "git_repos_location": "/tmp/repos"
