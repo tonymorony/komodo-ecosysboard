@@ -61,6 +61,216 @@
       "git": [
         "KomodoPlatform"
       ]
+    },
+    {
+      "coin": "dex",
+      "coin_paprika_id": "dex-dex",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "pangea",
+      "coin_paprika_id": "pangea",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "jumblr",
+      "coin_paprika_id": "jumblr",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "bet",
+      "coin_paprika_id": "bet",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "crypto",
+      "coin_paprika_id": "crypto",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "hodl",
+      "coin_paprika_id": "hodl",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "mshark",
+      "coin_paprika_id": "mshark",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "bots",
+      "coin_paprika_id": "bots",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "mgw",
+      "coin_paprika_id": "mgw",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "coqui",
+      "coin_paprika_id": "coqui",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "wlc",
+      "coin_paprika_id": "wlc",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "kv",
+      "coin_paprika_id": "kv",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "ceal",
+      "coin_paprika_id": "ceal",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "mesh",
+      "coin_paprika_id": "mesh",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "axo",
+      "coin_paprika_id": "axo",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "etomic",
+      "coin_paprika_id": "etomic",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "btch",
+      "coin_paprika_id": "btch",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "ninja",
+      "coin_paprika_id": "ninja",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "oot",
+      "coin_paprika_id": "oot-utrum",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "bntn",
+      "coin_paprika_id": "bntn",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "chain",
+      "coin_paprika_id": "chain",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "prlpay",
+      "coin_paprika_id": "prlpay",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "dsec",
+      "coin_paprika_id": "dsec",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "glxt",
+      "coin_paprika_id": "glxt",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "zilla",
+      "coin_paprika_id": "zilla-chainzilla",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "rfox",
+      "coin_paprika_id": "rfox-redfox-labs",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "sec",
+      "coin_paprika_id": "sec",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "ccl",
+      "coin_paprika_id": "ccl",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "pirate",
+      "coin_paprika_id": "arrr-pirate",
+      "git": [
+        "KomodoPlatform"
+      ]
+    },
+    {
+      "coin": "pgt",
+      "coin_paprika_id": "pgt",
+      "git": [
+        "KomodoPlatform"
+      ]
     }
   ],
   "git_repos_location": "/tmp/repos"
