@@ -43,7 +43,12 @@ type CoinInfos struct {
 func getInfoAboutSpecificCoin(key string, value string) CoinInfos {
 	currentCoin := CoinInfos{}
 	//! Ticker
-	res := CTickerCoinpaprika(value)
+	var res *CoinpaprikaTickerData
+	if strings.Contains(value, "-") {
+		res = CTickerCoinpaprika(value)
+	} else {
+		res = new(CoinpaprikaTickerData)
+	}
 	if value == "test coin" || res.Symbol == "" {
 		res.Symbol = strings.ToUpper(key)
 	}

@@ -18,6 +18,7 @@ package http
 
 import (
 	"encoding/json"
+	"github.com/kpango/glg"
 	"github.com/valyala/fasthttp"
 	"time"
 )
@@ -70,6 +71,8 @@ func CTickerCoinpaprika(coinsId string) *CoinpaprikaTickerData {
 	req, res := InternalExecGet(finalEndpoint, nil, false)
 	if res.StatusCode() == 200 {
 		_ = json.Unmarshal(res.Body(), &ticker)
+	} else if res.StatusCode() == 429 {
+		_ = glg.Warnf("To much request, please retry in one seconds")
 	}
 	ReleaseInternalExecGet(req, res)
 	return ticker
