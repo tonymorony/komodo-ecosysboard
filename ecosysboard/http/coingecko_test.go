@@ -34,3 +34,8 @@ func TestPingCoingecko(t *testing.T) {
 	assert.Nilf(t, err, "err should be nil")
 	assert.NotEmptyf(t, body, "body should not be empty")
 }
+
+func TestCCoinsInformation(t *testing.T) {
+	res := CCoinsCoingeckoInformation("komodo")
+	assert.NotEmpty(t, res, "should not be empty")
+}

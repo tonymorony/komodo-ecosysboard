@@ -32,6 +32,7 @@ type Config struct {
 	Coins          []struct {
 		Coin          string   `json:"coin"`
 		CoinPaprikaID string   `json:"coin_paprika_id"`
+		CoinGeckoID   string   `json:"coingecko_id"`
 		GitReposList  []string `json:"git"`
 	} `json:"coins"`
 	GitReposDirectory string `json:"git_repos_location"`

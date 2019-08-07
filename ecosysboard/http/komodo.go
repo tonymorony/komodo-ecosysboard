@@ -38,19 +38,26 @@ type CoinInfos struct {
 	NotarizedHash         string                `json:"notarizedhash"`
 	NotarizedTransactions []string              `json:"notarizedtxid"`
 	Supply                float64               `json:"supply"`
+	CoingeckoData         *CoingeckoCoinData    `json:"additional_data"`
 }
 
-func getInfoAboutSpecificCoin(key string, value string) CoinInfos {
+func getInfoAboutSpecificCoin(key string, coinpaprikaID string, coingeckoID string) CoinInfos {
 	currentCoin := CoinInfos{}
 	//! Ticker
 	var res *CoinpaprikaTickerData
-	if strings.Contains(value, "-") {
-		res = CTickerCoinpaprika(value)
+	if strings.Contains(coinpaprikaID, "-") {
+		res = CTickerCoinpaprika(coinpaprikaID)
 	} else {
 		res = new(CoinpaprikaTickerData)
 	}
-	if value == "test coin" || res.Symbol == "" {
+
+	if coinpaprikaID == "test coin" || res.Symbol == "" {
 		res.Symbol = strings.ToUpper(key)
+	}
+
+	//! Additional data
+	if len(coingeckoID) > 0 && !strings.Contains(coingeckoID, "test coin") {
+		currentCoin.CoingeckoData = CCoinsCoingeckoInformation(coingeckoID)
 	}
 	//! Last block hash
 	supply, err, status := CGetSupplyDexstats(key)
@@ -81,7 +88,7 @@ func GetInformationForSpecificCoinKomodoEcosystem(ctx *fasthttp.RequestCtx) {
 		return
 	}
 	_ = glg.Infof("find needle: %v", config.GConfig.Coins[idx])
-	coinInfo := getInfoAboutSpecificCoin(config.GConfig.Coins[idx].Coin, config.GConfig.Coins[idx].CoinPaprikaID)
+	coinInfo := getInfoAboutSpecificCoin(config.GConfig.Coins[idx].Coin, config.GConfig.Coins[idx].CoinPaprikaID, config.GConfig.Coins[idx].CoinGeckoID)
 	if cmp.Equal(CoinInfos{}, coinInfo) {
 		ctx.SetStatusCode(http.StatusInternalServerError)
 		return
@@ -97,13 +104,13 @@ func AllInformationsKomodoEcosystem(ctx *fasthttp.RequestCtx) {
 	var wg sync.WaitGroup
 	wg.Add(len(config.GConfig.Coins))
 	for _, value := range config.GConfig.Coins {
-		go func(key string, value string) {
+		go func(key string, coinpaprikaID string, coingeckoID string) {
 			defer wg.Done()
-			currentCoin := getInfoAboutSpecificCoin(key, value)
+			currentCoin := getInfoAboutSpecificCoin(key, coinpaprikaID, coingeckoID)
 			mutex.Lock()
 			coinInfos = append(coinInfos, currentCoin)
 			mutex.Unlock()
-		}(value.Coin, value.CoinPaprikaID)
+		}(value.Coin, value.CoinPaprikaID, value.CoinGeckoID)
 	}
 	wg.Wait()
 	if len(coinInfos) == 0 {

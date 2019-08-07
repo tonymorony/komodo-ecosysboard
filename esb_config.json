@@ -6,6 +6,7 @@
     {
       "coin": "kmd",
       "coin_paprika_id": "kmd-komodo",
+      "coingecko_id": "komodo",
       "git": [
         "KomodoPlatform",
         "https://github.com/pbca26/komodo-omni-explorer.git",
@@ -29,6 +30,7 @@
     {
       "coin": "k64",
       "coin_paprika_id": "k64-komodore64",
+      "coingecko_id": "komodore64",
       "git": [
         "KomodoPlatform"
       ]
@@ -36,6 +38,7 @@
     {
       "coin": "vrsc",
       "coin_paprika_id": "vrsc-verus-coin",
+      "coingecko_id": "verus-coin",
       "git": [
         "KomodoPlatform",
         "veruscoin"
@@ -44,6 +47,7 @@
     {
       "coin": "rick",
       "coin_paprika_id": "test coin",
+      "coingecko_id": "test coin",
       "git": [
         "KomodoPlatform"
       ]
@@ -51,6 +55,7 @@
     {
       "coin": "revs",
       "coin_paprika_id": "revs",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -58,6 +63,7 @@
     {
       "coin": "supernet",
       "coin_paprika_id": "unity-supernet",
+      "coingecko_id": "supernet",
       "git": [
         "KomodoPlatform"
       ]
@@ -65,6 +71,7 @@
     {
       "coin": "dex",
       "coin_paprika_id": "dex-dex",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -72,6 +79,7 @@
     {
       "coin": "pangea",
       "coin_paprika_id": "pangea",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -79,6 +87,7 @@
     {
       "coin": "jumblr",
       "coin_paprika_id": "jumblr",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -86,6 +95,7 @@
     {
       "coin": "bet",
       "coin_paprika_id": "bet",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -93,6 +103,7 @@
     {
       "coin": "crypto",
       "coin_paprika_id": "crypto",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -100,6 +111,7 @@
     {
       "coin": "hodl",
       "coin_paprika_id": "hodl",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -107,6 +119,7 @@
     {
       "coin": "mshark",
       "coin_paprika_id": "mshark",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -114,6 +127,7 @@
     {
       "coin": "bots",
       "coin_paprika_id": "bots",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -121,6 +135,7 @@
     {
       "coin": "mgw",
       "coin_paprika_id": "mgw",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -128,6 +143,7 @@
     {
       "coin": "coqui",
       "coin_paprika_id": "coqui",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -135,6 +151,7 @@
     {
       "coin": "wlc",
       "coin_paprika_id": "wlc",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -142,6 +159,7 @@
     {
       "coin": "kv",
       "coin_paprika_id": "kv",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -149,6 +167,7 @@
     {
       "coin": "ceal",
       "coin_paprika_id": "ceal",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -156,6 +175,7 @@
     {
       "coin": "mesh",
       "coin_paprika_id": "mesh",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -163,6 +183,7 @@
     {
       "coin": "axo",
       "coin_paprika_id": "axo",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -170,6 +191,7 @@
     {
       "coin": "etomic",
       "coin_paprika_id": "etomic",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -177,6 +199,7 @@
     {
       "coin": "btch",
       "coin_paprika_id": "btch",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -184,6 +207,7 @@
     {
       "coin": "ninja",
       "coin_paprika_id": "ninja",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -191,6 +215,7 @@
     {
       "coin": "oot",
       "coin_paprika_id": "oot-utrum",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -198,6 +223,7 @@
     {
       "coin": "bntn",
       "coin_paprika_id": "bntn",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -205,6 +231,7 @@
     {
       "coin": "chain",
       "coin_paprika_id": "chain",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -212,6 +239,7 @@
     {
       "coin": "prlpay",
       "coin_paprika_id": "prlpay",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -219,6 +247,7 @@
     {
       "coin": "dsec",
       "coin_paprika_id": "dsec",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -226,6 +255,7 @@
     {
       "coin": "glxt",
       "coin_paprika_id": "glxt",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -233,6 +263,7 @@
     {
       "coin": "zilla",
       "coin_paprika_id": "zilla-chainzilla",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -240,6 +271,7 @@
     {
       "coin": "rfox",
       "coin_paprika_id": "rfox-redfox-labs",
+      "coingecko_id": "redfox-labs",
       "git": [
         "KomodoPlatform"
       ]
@@ -247,6 +279,7 @@
     {
       "coin": "sec",
       "coin_paprika_id": "sec",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -254,6 +287,7 @@
     {
       "coin": "ccl",
       "coin_paprika_id": "ccl",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -261,6 +295,7 @@
     {
       "coin": "pirate",
       "coin_paprika_id": "arrr-pirate",
+      "coingecko_id": "pirate-chain",
       "git": [
         "KomodoPlatform"
       ]
@@ -268,6 +303,7 @@
     {
       "coin": "pgt",
       "coin_paprika_id": "pgt",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -275,6 +311,7 @@
     {
       "coin": "kmdice",
       "coin_paprika_id": "kmdice",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -282,6 +319,7 @@
     {
       "coin": "dion",
       "coin_paprika_id": "dion",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -289,6 +327,7 @@
     {
       "coin": "ksb",
       "coin_paprika_id": "ksb",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -296,6 +335,7 @@
     {
       "coin": "our",
       "coin_paprika_id": "our",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -303,6 +343,7 @@
     {
       "coin": "iln",
       "coin_paprika_id": "iln",
+      "coingecko_id": "",
       "git": [
         "KomodoPlatform"
       ]
@@ -310,6 +351,7 @@
     {
       "coin": "koin",
       "coin_paprika_id": "koin-koinon",
+      "coingecko_id": "koinon",
       "git": [
         "KomodoPlatform"
       ]
@@ -317,6 +359,7 @@
     {
       "coin": "zexo",
       "coin_paprika_id": "zex-zaddex",
+      "coingecko_id": "zaddex",
       "git": [
         "KomodoPlatform"
       ]
