@@ -39,10 +39,12 @@ type CoinInfos struct {
 	NotarizedTransactions []string              `json:"notarizedtxid"`
 	Supply                float64               `json:"supply"`
 	CoingeckoData         *CoingeckoCoinData    `json:"additional_data"`
+	KomodoCoinID          string                `json:"komodo_coin_id"`
 }
 
 func getInfoAboutSpecificCoin(key string, coinpaprikaID string, coingeckoID string) CoinInfos {
 	currentCoin := CoinInfos{}
+	currentCoin.KomodoCoinID = key
 	//! Ticker
 	var res *CoinpaprikaTickerData
 	if strings.Contains(coinpaprikaID, "-") {
