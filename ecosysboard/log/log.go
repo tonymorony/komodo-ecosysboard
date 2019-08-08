@@ -25,6 +25,7 @@ func InitLogger(logsPath string) (*os.File, *os.File) {
 	mode := int(0777)
 	infolog := glg.FileWriter(logsPath+"/komodo_ecosysboard.info.log", os.FileMode(mode))
 	errlog := glg.FileWriter(logsPath+"/komodo_ecosysboard.error.log", os.FileMode(mode))
-	glg.Get().SetMode(glg.BOTH).AddLevelWriter(glg.INFO, infolog).AddLevelWriter(glg.ERR, errlog).AddLevelWriter(glg.LOG, infolog).AddLevelWriter(glg.FATAL, errlog)
+	dbglog := glg.FileWriter(logsPath+"/komodo_ecosysboard.debug.log", os.FileMode(mode))
+	glg.Get().SetMode(glg.BOTH).AddLevelWriter(glg.INFO, infolog).AddLevelWriter(glg.ERR, errlog).AddLevelWriter(glg.LOG, infolog).AddLevelWriter(glg.FATAL, errlog).AddLevelWriter(glg.DEBG, dbglog).AddLevelWriter(glg.WARN, errlog)
 	return infolog, errlog
 }

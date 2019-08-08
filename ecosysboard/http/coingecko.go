@@ -48,7 +48,7 @@ func CCoinsCoingeckoInformation(coinsId string) *CoingeckoCoinData {
 	if res.StatusCode() == 200 {
 		_ = json.Unmarshal(res.Body(), &coinsInfo)
 	} else if res.StatusCode() == 429 {
-		_ = glg.Warnf("To much request, please retry in one seconds")
+		_ = glg.Warnf("To much request, please retry in one seconds (CCoinsCoingeckoInformation) [%s]", coinsId)
 	}
 	ReleaseInternalExecGet(req, res)
 	return coinsInfo
