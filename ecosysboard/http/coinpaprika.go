@@ -72,7 +72,9 @@ func CTickerCoinpaprika(coinsId string) *CoinpaprikaTickerData {
 	if res.StatusCode() == 200 {
 		_ = json.Unmarshal(res.Body(), &ticker)
 	} else if res.StatusCode() == 429 {
-		_ = glg.Warnf("To much request, please retry in one seconds")
+		_ = glg.Warnf("To much request, please retrying (CTickerCoinpaprika) [%s]", coinsId)
+		time.Sleep(1 * time.Second)
+		return CTickerCoinpaprika(coinsId)
 	}
 	ReleaseInternalExecGet(req, res)
 	return ticker
