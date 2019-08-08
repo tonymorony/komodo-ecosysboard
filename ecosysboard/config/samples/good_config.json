@@ -6,6 +6,7 @@
     {
       "coin": "kmd",
       "coin_paprika_id": "kmd-komodo",
+      "coingecko_id": "komodo",
       "git": [
         "KomodoPlatform",
         "https://github.com/pbca26/komodo-omni-explorer.git",

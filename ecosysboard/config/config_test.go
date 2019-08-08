@@ -46,9 +46,10 @@ func TestLoadConfig(t *testing.T) {
 				Coins: []struct {
 					Coin          string   `json:"coin"`
 					CoinPaprikaID string   `json:"coin_paprika_id"`
+					CoinGeckoID   string   `json:"coingecko_id"`
 					GitReposList  []string `json:"git"`
 				}{
-					{"kmd", "kmd-komodo", []string{"KomodoPlatform", "https://github.com/pbca26/komodo-omni-explorer.git",
+					{"kmd", "kmd-komodo", "komodo", []string{"KomodoPlatform", "https://github.com/pbca26/komodo-omni-explorer.git",
 						"https://github.com/jl777/komodo.git",
 						"https://github.com/atomiclabs/hyperdex.git",
 						"https://github.com/jl777/chips3.git",
@@ -64,11 +65,11 @@ func TestLoadConfig(t *testing.T) {
 						"https://github.com/webworker01/knomp.git",
 						"https://github.com/pbca26/agama-mobile.git",
 						"https://github.com/pbca26/agama-web.git"}},
-					{"k64", "k64-komodore64", []string{"KomodoPlatform"}},
-					{"vrsc", "vrsc-verus-coin", []string{"KomodoPlatform"}},
-					{"rick", "test coin", []string{"KomodoPlatform"}},
-					{"revs", "revs", []string{"KomodoPlatform"}},
-					{"supernet", "unity-supernet", []string{"KomodoPlatform"}},
+					{"k64", "k64-komodore64", "", []string{"KomodoPlatform"}},
+					{"vrsc", "vrsc-verus-coin", "", []string{"KomodoPlatform"}},
+					{"rick", "test coin", "", []string{"KomodoPlatform"}},
+					{"revs", "revs", "", []string{"KomodoPlatform"}},
+					{"supernet", "unity-supernet", "", []string{"KomodoPlatform"}},
 				},
 				GitReposDirectory: "/tmp/repos",
 			},
