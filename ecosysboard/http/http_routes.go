@@ -17,6 +17,7 @@
 package http
 
 import (
+	"github.com/KomodoPlatform/komodo-ecosysboard/ecosysboard/config"
 	"github.com/fasthttp/router"
 )
 
@@ -50,7 +51,13 @@ func InitRooter() *router.Router {
 	//! Coinpaprika
 	r.GET("/api/v1/coinpaprika/tickers", TickersCoinpaprika)
 
+	//! Komodo ecosysboard call
 	r.GET("/api/v1/tickers", AllInformationsKomodoEcosystem)
 	r.GET("/api/v1/tickers/:coin", GetInformationForSpecificCoinKomodoEcosystem)
+	config.GConfigMutex.Lock()
+	if len(config.GConfig.LogsPath) > 0 {
+		r.ServeFiles("/logs/*filepath", config.GConfig.LogsPath)
+	}
+	config.GConfigMutex.Unlock()
 	return r
 }

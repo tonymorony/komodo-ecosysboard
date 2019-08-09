@@ -14,45 +14,13 @@
  *                                                                            *
  ******************************************************************************/
 
-package http
-
-// #cgo CFLAGS: -O2 -Wall
-// #include "magic_port.h"
-import "C"
+package komodo_cache
 
 import (
-	"github.com/kpango/glg"
-	"github.com/valyala/fasthttp"
-	"time"
+	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
-func GetFirstOpenPort() int {
-	port := C.get_first_open_port()
-	return int(port)
-}
-
-func InternalExecGet(finalEndpoint string, ctx *fasthttp.RequestCtx, shouldRelease bool) (*fasthttp.Request, *fasthttp.Response) {
-	_ = glg.Debugf("final endpoint: %s", finalEndpoint)
-	status, body, err := fasthttp.GetTimeout(nil, finalEndpoint, 30*time.Second)
-	if err != nil {
-		_ = glg.Errorf("Http error: %v & endpoint: %s", err, finalEndpoint)
-	}
-	if ctx != nil {
-		ctx.SetStatusCode(status)
-		ctx.SetBodyString(string(body))
-	}
-	_ = glg.Debugf("http response: %s", string(body))
-	if !shouldRelease {
-		req := fasthttp.AcquireRequest()
-		res := fasthttp.AcquireResponse()
-		res.SetStatusCode(status)
-		res.SetBody(body)
-		return req, res
-	}
-	return nil, nil
-}
-
-func ReleaseInternalExecGet(req *fasthttp.Request, res *fasthttp.Response) {
-	fasthttp.ReleaseRequest(req)
-	fasthttp.ReleaseResponse(res)
+func TestCreateCache(t *testing.T) {
+	assert.NotNil(t, CreateCache(), "should not be nil")
 }

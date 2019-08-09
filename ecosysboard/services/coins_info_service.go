@@ -14,45 +14,37 @@
  *                                                                            *
  ******************************************************************************/
 
-package http
-
-// #cgo CFLAGS: -O2 -Wall
-// #include "magic_port.h"
-import "C"
+package services
 
 import (
+	"github.com/KomodoPlatform/komodo-ecosysboard/ecosysboard/config"
+	"github.com/KomodoPlatform/komodo-ecosysboard/ecosysboard/http"
 	"github.com/kpango/glg"
-	"github.com/valyala/fasthttp"
+	"sync"
 	"time"
 )
 
-func GetFirstOpenPort() int {
-	port := C.get_first_open_port()
-	return int(port)
+func fetchCoinInfos() {
+	_ = glg.Infof("fetch coin info begin")
+	var wg sync.WaitGroup
+	wg.Add(len(config.GConfig.Coins))
+	for _, value := range config.GConfig.Coins {
+		go func(key string, coinpaprikaID string, coingeckoID string) {
+			defer wg.Done()
+			_ = http.GetRealTimeCoinInfos(key, coinpaprikaID, coingeckoID)
+		}(value.Coin, value.CoinPaprikaID, value.CoinGeckoID)
+	}
+	wg.Wait()
+	_ = glg.Infof("fetch coin info finish")
 }
 
-func InternalExecGet(finalEndpoint string, ctx *fasthttp.RequestCtx, shouldRelease bool) (*fasthttp.Request, *fasthttp.Response) {
-	_ = glg.Debugf("final endpoint: %s", finalEndpoint)
-	status, body, err := fasthttp.GetTimeout(nil, finalEndpoint, 30*time.Second)
-	if err != nil {
-		_ = glg.Errorf("Http error: %v & endpoint: %s", err, finalEndpoint)
+func LaunchCoinsInfoService() {
+	fetchCoinInfos()
+	gitStatsTicker := time.NewTicker(30 * time.Second)
+	for {
+		select {
+		case <-gitStatsTicker.C:
+			fetchCoinInfos()
+		}
 	}
-	if ctx != nil {
-		ctx.SetStatusCode(status)
-		ctx.SetBodyString(string(body))
-	}
-	_ = glg.Debugf("http response: %s", string(body))
-	if !shouldRelease {
-		req := fasthttp.AcquireRequest()
-		res := fasthttp.AcquireResponse()
-		res.SetStatusCode(status)
-		res.SetBody(body)
-		return req, res
-	}
-	return nil, nil
-}
-
-func ReleaseInternalExecGet(req *fasthttp.Request, res *fasthttp.Response) {
-	fasthttp.ReleaseRequest(req)
-	fasthttp.ReleaseResponse(res)
 }

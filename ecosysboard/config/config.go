@@ -23,6 +23,7 @@ import (
 	"io/ioutil"
 	"os"
 	"sort"
+	"sync"
 )
 
 type Config struct {
@@ -36,9 +37,11 @@ type Config struct {
 		GitReposList  []string `json:"git"`
 	} `json:"coins"`
 	GitReposDirectory string `json:"git_repos_location"`
+	LogsPath          string
 }
 
 var GConfig *Config
+var GConfigMutex sync.Mutex
 
 func LoadConfig(ConfigPath string) (*Config, error) {
 	if _, err := os.Stat(ConfigPath); os.IsNotExist(err) {
@@ -63,5 +66,6 @@ func LoadConfig(ConfigPath string) (*Config, error) {
 		return cfg.Coins[i].Coin < cfg.Coins[j].Coin
 	})
 	GConfig = cfg
+	GConfig.LogsPath = string("")
 	return cfg, nil
 }
