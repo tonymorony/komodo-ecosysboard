@@ -41,7 +41,11 @@ func InternalExecGet(finalEndpoint string, ctx *fasthttp.RequestCtx, shouldRelea
 		ctx.SetStatusCode(status)
 		ctx.SetBodyString(string(body))
 	}
-	_ = glg.Debugf("http response: %s", string(body))
+	if len(string(body)) > 100 {
+		_ = glg.Debugf("http response (100 first bytes): %s", string(body)[0:100])
+	} else {
+		_ = glg.Debugf("http response: %s", string(body))
+	}
 	if !shouldRelease {
 		req := fasthttp.AcquireRequest()
 		res := fasthttp.AcquireResponse()
