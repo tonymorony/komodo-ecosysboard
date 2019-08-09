@@ -37,7 +37,10 @@ type HTTPDexstatsTestSuite struct {
 
 func (suite *HTTPDexstatsTestSuite) SetupTest() {
 	port := GetFirstOpenPort()
+	config.GConfigMutex.Lock()
 	cfg := &config.Config{HTTPPort: port}
+	config.GConfig = cfg
+	config.GConfigMutex.Unlock()
 	suite.strPort = fmt.Sprintf("%d", port)
 	go LaunchServer(cfg)
 	time.Sleep(10 * time.Millisecond)
@@ -98,7 +101,9 @@ func (suite *HTTPDexstatsTestSuite) TestDiagnosticInfoFromNodeDexstats() {
 
 func (suite *HTTPDexstatsTestSuite) TestSearchOnDexstats() {
 	//fasthttp.Pos
+	config.GConfigMutex.Lock()
 	config.GConfig = new(config.Config)
+	config.GConfigMutex.Unlock()
 	value, _ := strconv.Atoi(suite.strPort)
 	config.GConfig.HTTPPort = value
 	client := fasthttp.Client{}

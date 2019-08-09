@@ -23,6 +23,7 @@ import (
 	"io/ioutil"
 	"os"
 	"sort"
+	"sync"
 )
 
 type Config struct {
@@ -40,6 +41,7 @@ type Config struct {
 }
 
 var GConfig *Config
+var GConfigMutex sync.Mutex
 
 func LoadConfig(ConfigPath string) (*Config, error) {
 	if _, err := os.Stat(ConfigPath); os.IsNotExist(err) {
