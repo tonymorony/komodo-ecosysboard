@@ -19,6 +19,7 @@ package http
 import (
 	"fmt"
 	"github.com/KomodoPlatform/komodo-ecosysboard/ecosysboard/config"
+	"github.com/KomodoPlatform/komodo-ecosysboard/ecosysboard/komodo_cache"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"github.com/valyala/fasthttp"
@@ -50,6 +51,7 @@ func (suite *HTTPKomodoTestSuite) finalizeTests(url string, expectedStatus int) 
 }
 
 func (suite *HTTPKomodoTestSuite) SetupTest() {
+	komodo_cache.CreateCache()
 	dir, _ := os.Getwd()
 	parent := filepath.Dir(dir)
 	_, err := config.LoadConfig(parent + "/config/samples/good_config.json")

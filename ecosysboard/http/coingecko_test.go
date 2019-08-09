@@ -26,7 +26,8 @@ import (
 
 func TestPingCoingecko(t *testing.T) {
 	port := GetFirstOpenPort()
-	cfg := &config.Config{HTTPPort: port}
+	cfg := &config.Config{HTTPPort: port, LogsPath: ""}
+	config.GConfig = cfg
 	strPort := fmt.Sprintf("%d", port)
 	go LaunchServer(cfg)
 	statusCode, body, err := fasthttp.Get(nil, "http://127.0.0.1:"+strPort+"/api/v1/coingecko/ping")

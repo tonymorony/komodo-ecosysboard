@@ -36,6 +36,7 @@ type Config struct {
 		GitReposList  []string `json:"git"`
 	} `json:"coins"`
 	GitReposDirectory string `json:"git_repos_location"`
+	LogsPath          string
 }
 
 var GConfig *Config
@@ -63,5 +64,6 @@ func LoadConfig(ConfigPath string) (*Config, error) {
 		return cfg.Coins[i].Coin < cfg.Coins[j].Coin
 	})
 	GConfig = cfg
+	GConfig.LogsPath = string("")
 	return cfg, nil
 }

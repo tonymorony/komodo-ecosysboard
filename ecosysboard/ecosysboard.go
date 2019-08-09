@@ -21,7 +21,9 @@ import (
 	"fmt"
 	"github.com/KomodoPlatform/komodo-ecosysboard/ecosysboard/config"
 	"github.com/KomodoPlatform/komodo-ecosysboard/ecosysboard/http"
+	"github.com/KomodoPlatform/komodo-ecosysboard/ecosysboard/komodo_cache"
 	"github.com/KomodoPlatform/komodo-ecosysboard/ecosysboard/log"
+	"github.com/KomodoPlatform/komodo-ecosysboard/ecosysboard/services"
 	"github.com/kpango/glg"
 )
 
@@ -41,5 +43,8 @@ func main() {
 		glg.Fatalf("error loading configuration: %v", err)
 	}
 	_ = glg.Infof("Successfully parsed config: %v", *cfg)
+	komodo_cache.CreateCache()
+	go services.LaunchCoinsInfoService()
+	config.GConfig.LogsPath = *logsPath
 	http.LaunchServer(cfg)
 }

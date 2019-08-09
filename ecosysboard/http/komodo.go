@@ -20,8 +20,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/KomodoPlatform/komodo-ecosysboard/ecosysboard/config"
+	"github.com/KomodoPlatform/komodo-ecosysboard/ecosysboard/komodo_cache"
 	"github.com/google/go-cmp/cmp"
 	"github.com/kpango/glg"
+	"github.com/patrickmn/go-cache"
 	"github.com/valyala/fasthttp"
 	"net/http"
 	"sort"
@@ -43,7 +45,19 @@ type CoinInfos struct {
 }
 
 func getInfoAboutSpecificCoin(key string, coinpaprikaID string, coingeckoID string) CoinInfos {
-	currentCoin := CoinInfos{}
+	currentCoin := new(CoinInfos)
+	if x, found := komodo_cache.GCache.Get(key); found {
+		_ = glg.Infof("Retrieve from cache [coin: %s][coinpaprika_id: %s][coingeckoID: %s]", key, coinpaprikaID, coingeckoID)
+		currentCoin = x.(*CoinInfos)
+	} else {
+		_ = glg.Infof("Retrieve realTime [coin: %s][coinpaprika_id: %s][coingeckoID: %s]", key, coinpaprikaID, coingeckoID)
+		currentCoin = GetRealTimeCoinInfos(key, coinpaprikaID, coingeckoID)
+	}
+	return *currentCoin
+}
+
+func GetRealTimeCoinInfos(key string, coinpaprikaID string, coingeckoID string) *CoinInfos {
+	currentCoin := new(CoinInfos)
 	currentCoin.KomodoCoinID = key
 	//! Ticker
 	var res *CoinpaprikaTickerData
@@ -52,11 +66,9 @@ func getInfoAboutSpecificCoin(key string, coinpaprikaID string, coingeckoID stri
 	} else {
 		res = new(CoinpaprikaTickerData)
 	}
-
 	if coinpaprikaID == "test coin" || res.Symbol == "" {
 		res.Symbol = strings.ToUpper(key)
 	}
-
 	//! Additional data
 	if len(coingeckoID) > 0 && !strings.Contains(coingeckoID, "test coin") {
 		currentCoin.CoingeckoData = CCoinsCoingeckoInformation(coingeckoID)
@@ -78,6 +90,7 @@ func getInfoAboutSpecificCoin(key string, coinpaprikaID string, coingeckoID stri
 		currentCoin.NotarizedTransactions = CBlockDetailsDexstats(key, currentCoin.NotarizedHash).Tx
 	}
 	currentCoin.Ticker = *res
+	komodo_cache.GCache.Set(key, currentCoin, cache.NoExpiration)
 	return currentCoin
 }
 
