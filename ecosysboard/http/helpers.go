@@ -33,7 +33,7 @@ func GetFirstOpenPort() int {
 
 func InternalExecGet(finalEndpoint string, ctx *fasthttp.RequestCtx, shouldRelease bool) (*fasthttp.Request, *fasthttp.Response) {
 	_ = glg.Debugf("final endpoint: %s", finalEndpoint)
-	status, body, err := fasthttp.GetTimeout(nil, finalEndpoint, 3*time.Second)
+	status, body, err := fasthttp.GetTimeout(nil, finalEndpoint, 30*time.Second)
 	if err != nil {
 		_ = glg.Errorf("Http error: %v & endpoint: %s", err, finalEndpoint)
 	}

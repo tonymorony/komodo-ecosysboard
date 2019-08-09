@@ -142,7 +142,7 @@ func (suite *HTTPDexstatsTestSuite) TestSearchOnDexstats() {
 }
 
 func (suite *HTTPDexstatsTestSuite) TestTransactionByAddressDexstats() {
-	statusCode, body, err := fasthttp.Get(nil, "http://127.0.0.1:"+suite.strPort+"/api/v1/dexstats/kmd/txsaddress/RMbNsa4Nf3BAd16BQaAAmfzAgnuorUDrCr")
+	statusCode, body, err := fasthttp.Get(nil, "http://127.0.0.1:"+suite.strPort+"/api/v1/dexstats/kmd/txsaddress/RVsiFUqkinHtu7Wo3iwvT7LojfpStoCasq")
 	suite.finalizeTest(err, statusCode, body)
 }
 
