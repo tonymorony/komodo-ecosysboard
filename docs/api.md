@@ -3469,7 +3469,7 @@ Retrieves the data of a **komodo ecosystem coin** to create a graphical analysis
 ```
 
 Curl command: `curl http://127.0.0.1:8080/api/v1/charts/kmd` (by default 30days, and usd)
-or `curl http://127.0.0.1:8080/api/v1/charts/kmd?quote_currency=usd&days=30`
+or `curl http://127.0.0.1:8080/api/v1/charts/kmd?quote_currency=usd&days=1` (for one day like the example)
 
 ## get information about all coins
 
