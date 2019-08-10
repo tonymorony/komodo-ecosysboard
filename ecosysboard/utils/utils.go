@@ -44,6 +44,16 @@ func IsPathExist(path string) bool {
 	return true
 }
 
+func DeleteEmpty(s []string) []string {
+	var r []string
+	for _, str := range s {
+		if str != "" {
+			r = append(r, str)
+		}
+	}
+	return r
+}
+
 func IOReadDir(root string, prefix string) ([]string, error) {
 	var files []string
 	fileInfo, err := ioutil.ReadDir(root)

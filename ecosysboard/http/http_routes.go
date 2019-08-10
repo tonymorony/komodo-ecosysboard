@@ -54,6 +54,7 @@ func InitRooter() *router.Router {
 	//! Komodo ecosysboard call
 	r.GET("/api/v1/tickers", AllInformationsKomodoEcosystem)
 	r.GET("/api/v1/tickers/:coin", GetInformationForSpecificCoinKomodoEcosystem)
+	r.GET("/api/v1/charts/:coin", GetChartForSpecificCoinKomodoEcosystem)
 	config.GConfigMutex.Lock()
 	if len(config.GConfig.LogsPath) > 0 {
 		r.ServeFiles("/logs/*filepath", config.GConfig.LogsPath)

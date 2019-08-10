@@ -53,3 +53,10 @@ func TestIOReadDir(t *testing.T) {
 	assert.NotNil(t, err, "should not be nil")
 	assert.Empty(t, dirs, "Should be empty")
 }
+
+func TestDeleteEmpty(t *testing.T) {
+	var sliceStr = []string{"foo", "bar", "", ""}
+	assert.Lenf(t, sliceStr, 4, "size should be 4")
+	sliceStr = DeleteEmpty(sliceStr)
+	assert.Lenf(t, sliceStr, 2, "size should be 2")
+}
