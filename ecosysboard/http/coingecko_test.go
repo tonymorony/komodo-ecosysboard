@@ -40,3 +40,8 @@ func TestCCoinsInformation(t *testing.T) {
 	res := CCoinsCoingeckoInformation("komodo")
 	assert.NotEmpty(t, res, "should not be empty")
 }
+
+func TestCCoinsCoingeckoPriceHisto(t *testing.T) {
+	res := CCoinsCoingeckoPriceHisto("komodo", "usd", "30")
+	assert.NotEmpty(t, res, "should not be empty")
+}

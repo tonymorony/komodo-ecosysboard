@@ -18,9 +18,17 @@ package http
 
 import (
 	"encoding/json"
+	"github.com/KomodoPlatform/komodo-ecosysboard/ecosysboard/utils"
 	"github.com/kpango/glg"
 	"github.com/valyala/fasthttp"
+	"time"
 )
+
+type CoingeckoCoinHistoPrices struct {
+	Prices       [][]float64 `json:"prices"`
+	MarketCaps   [][]float64 `json:"market_caps"`
+	TotalVolumes [][]float64 `json:"total_volumes"`
+}
 
 type CoingeckoCoinData struct {
 	Links struct {
@@ -49,9 +57,31 @@ func CCoinsCoingeckoInformation(coinsId string) *CoingeckoCoinData {
 		_ = json.Unmarshal(res.Body(), &coinsInfo)
 	} else if res.StatusCode() == 429 {
 		_ = glg.Warnf("To much request, please retry in one seconds (CCoinsCoingeckoInformation) [%s]", coinsId)
+		time.Sleep(1 * time.Second)
+		return CCoinsCoingeckoInformation(coinsId)
 	}
 	ReleaseInternalExecGet(req, res)
+	coinsInfo.Links.BlockchainSite = utils.DeleteEmpty(coinsInfo.Links.BlockchainSite)
+	coinsInfo.Links.AnnouncementURL = utils.DeleteEmpty(coinsInfo.Links.AnnouncementURL)
+	coinsInfo.Links.ChatURL = utils.DeleteEmpty(coinsInfo.Links.ChatURL)
+	coinsInfo.Links.Homepage = utils.DeleteEmpty(coinsInfo.Links.Homepage)
+	coinsInfo.Links.OfficialForumURL = utils.DeleteEmpty(coinsInfo.Links.OfficialForumURL)
 	return coinsInfo
+}
+
+func CCoinsCoingeckoPriceHisto(coinsId string, currencyQuote string, nbDays string) *CoingeckoCoinHistoPrices {
+	coinsHisto := new(CoingeckoCoinHistoPrices)
+	finalEndpoint := CoingGeckoEndpoint + "/coins/" + coinsId + "/market_chart?vs_currency=" + currencyQuote + "&days=" + nbDays
+	req, res := InternalExecGet(finalEndpoint, nil, false)
+	if res.StatusCode() == 200 {
+		_ = json.Unmarshal(res.Body(), &coinsHisto)
+	} else if res.StatusCode() == 429 {
+		_ = glg.Warnf("To much request, please retry in one seconds (CCoinsCoingeckoInformation) [%s]", coinsId)
+		time.Sleep(1 * time.Second)
+		return CCoinsCoingeckoPriceHisto(coinsId, currencyQuote, nbDays)
+	}
+	ReleaseInternalExecGet(req, res)
+	return coinsHisto
 }
 
 func PingCoingecko(ctx *fasthttp.RequestCtx) {

@@ -72,6 +72,12 @@ func (suite *HTTPKomodoTestSuite) TestAllInformationsKomodoEcosystem() {
 	suite.finalizeTests("http://127.0.0.1:"+suite.strPort+"/api/v1/tickers", 200)
 }
 
+func (suite *HTTPKomodoTestSuite) TestGetChartForSpecificCoinKomodoEcosystem() {
+	suite.finalizeTests("http://127.0.0.1:"+suite.strPort+"/api/v1/charts/kmd", 200)
+	suite.finalizeTests("http://127.0.0.1:"+suite.strPort+"/api/v1/charts/kmd?quote_currency=usd&days=30", 200)
+	suite.finalizeTests("http://127.0.0.1:"+suite.strPort+"/api/v1/charts/komodo", 404)
+}
+
 func (suite *HTTPKomodoTestSuite) TestGetInformationForSpecificCoinKomodoEcosystem() {
 	suite.finalizeTests("http://127.0.0.1:"+suite.strPort+"/api/v1/tickers/kmd", 200)
 	suite.finalizeTests("http://127.0.0.1:"+suite.strPort+"/api/v1/tickers/kmdd", 404)

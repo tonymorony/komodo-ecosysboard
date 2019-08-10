@@ -137,3 +137,28 @@ func AllInformationsKomodoEcosystem(ctx *fasthttp.RequestCtx) {
 	jsonTicker, _ := json.Marshal(coinInfos)
 	ctx.SetBodyString(string(jsonTicker))
 }
+
+func GetChartForSpecificCoinKomodoEcosystem(ctx *fasthttp.RequestCtx) {
+	coinName := ctx.UserValue("coin")
+	idx := sort.Search(len(config.GConfig.Coins), func(i int) bool { return config.GConfig.Coins[i].Coin >= coinName.(string) })
+	if config.GConfig.Coins[idx].Coin != coinName {
+		_, _ = ctx.WriteString(`{"error": "This coin does not seem to be part of the komodo ecosystem"}`)
+		ctx.SetStatusCode(http.StatusNotFound)
+		return
+	}
+	quoteByte := ctx.QueryArgs().Peek("quote_currency")
+	var quoteStr string = "usd"
+	if quoteByte != nil {
+		quoteStr = string(quoteByte)
+	}
+	daysByte := ctx.QueryArgs().Peek("days")
+	var daysStr string = "30"
+	if daysByte != nil {
+		daysStr = string(daysByte)
+	}
+
+	histoPrice := CCoinsCoingeckoPriceHisto(config.GConfig.Coins[idx].CoinGeckoID, quoteStr, daysStr)
+	ctx.SetStatusCode(200)
+	jsonHistoPrice, _ := json.Marshal(histoPrice)
+	ctx.SetBodyString(string(jsonHistoPrice))
+}
