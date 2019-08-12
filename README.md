@@ -52,7 +52,7 @@ bash scripts/coverage.sh
 To run the program after building it type the following command:
 
 ```
-./komodo_ecosysboard -config_path esb_config.json -logs_path logs
+./komodo-ecosysboard -config_path esb_config.json -logs_path logs
 ```
 
 ## Deployment
